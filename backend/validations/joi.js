@@ -17,17 +17,11 @@ const loginUserValidation = {
   }),
 };
 
-const updateBlogValidation = {
-  body: Joi.object().keys({
-    id: Joi.string().required().custom(isValidObjectId),
-    title: Joi.string().optional(),
-    content: Joi.string().optional(),
-  }),
-};
+
 
 
 export {
   registerUserValidation,
   loginUserValidation,
-  updateBlogValidation,
+  
 };
