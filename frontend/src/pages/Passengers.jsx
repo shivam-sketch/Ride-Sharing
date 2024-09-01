@@ -8,11 +8,21 @@ function PassengerForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await fetch("http://localhost:5000/api/v1/passengers", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, startLocation, endLocation, requestedTime }),
-    });
+    try {
+      const res = await fetch("http://localhost:5000/api/v1/passengers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, startLocation, endLocation, requestedTime }),
+      });
+      if (res.status == 200) {
+        alert("Submitted");
+      } else if (res.status == 500) {
+        alert("Server error");
+      }
+    } catch (err) {
+      console.log(err);
+      alert("error");
+    }
   };
 
   return (
@@ -26,6 +36,7 @@ function PassengerForm() {
             placeholder="Name"
             value={name}
             onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
       </div>
@@ -38,6 +49,7 @@ function PassengerForm() {
             id="startLat"
             placeholder="Start Latitude"
             value={startLocation.lat}
+            required
             onChange={(e) => setStartLocation({ ...startLocation, lat: e.target.value })}
           />
         </div>
@@ -51,6 +63,7 @@ function PassengerForm() {
             id="startLong"
             placeholder="Start Longitude"
             value={startLocation.long}
+            required
             onChange={(e) => setStartLocation({ ...startLocation, long: e.target.value })}
           />
         </div>
@@ -64,6 +77,7 @@ function PassengerForm() {
             id="endLat"
             placeholder="End Latitude"
             value={endLocation.lat}
+            required
             onChange={(e) => setEndLocation({ ...endLocation, lat: e.target.value })}
           />
         </div>
@@ -77,6 +91,7 @@ function PassengerForm() {
             id="endLong"
             placeholder="End Longitude"
             value={endLocation.long}
+            required
             onChange={(e) => setEndLocation({ ...endLocation, long: e.target.value })}
           />
         </div>
@@ -89,6 +104,7 @@ function PassengerForm() {
             type="datetime-local"
             id="requestedTime"
             value={requestedTime}
+            required
             onChange={(e) => setRequestedTime(e.target.value)}
           />
         </div>
