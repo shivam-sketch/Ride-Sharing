@@ -17,12 +17,34 @@ This project is an Automated Ride Sharing system built with Node.js, Express, Mo
    ```bash
    npm install
    
-2. Create a .env file in the backend/ folder and add your environment variables (e.g., MongoDB URI).
+3. Create a .env file in the backend/ folder and add your environment variables (e.g., MongoDB URI).
 
 ```bash
    PORT=5000
 JWT_SECRET=BOOKAUTHORREADER
 MONGODB_URI=mongodb+srv://test_project:ShivamDB2601@cluster0.3nfqkym.mongodb.net/rides?retryWrites=true&w=majority&appName=Cluster0
 ```
-3. 
-   
+4. Start the server: 
+
+```bash
+npm start
+
+```
+
+
+   ### Frontend
+
+1. Navigate to the frontend/ folder.
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+3. Start server
+
+```bash
+npm run dev
+
+```
+
